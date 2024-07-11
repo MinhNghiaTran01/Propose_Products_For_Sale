@@ -24,9 +24,12 @@ def open_file(file):
     print("Error file is not readable")
 
 def saveDataInFile(data):
-  fileSave = './Infor_feed_back_detail.json'
+  fileSave = r'C:\Thuc tap\Clone\DataAlterFiler\Infor_feed_back_detail.json'
+  with open(fileSave,'r',encoding='utf-8') as file:
+    dataOld = json.load(file)
+  dataOld.extend(data)
   with open(fileSave,'w',encoding='utf-8') as file:
-    json.dump(data, file,ensure_ascii=False, indent=4) 
+    json.dump(dataOld, file,ensure_ascii=False, indent=4)
   
 def getFetchData(path):
   url = 'https://shopee.vn' + path
@@ -74,7 +77,7 @@ def getFetchData(path):
         'has_more': data['data']['has_more']
       }
 def main():
-  fileInput = './Infor_product_and_shop_detail.json'
+  fileInput = r'C:\Thuc tap\Clone\DataAlterFiler\Infor_product_and_shop_detail.json'
   data = open_file(fileInput)
   # data = [
   #   {
@@ -82,7 +85,7 @@ def main():
   #   }
   # ]
   loop = 0
-  data = data[0:100]
+  data = data[100:101]
   if data is not None:
     if isinstance(data, list):
      for item in data:
