@@ -13,7 +13,7 @@ def draw_chart(data):
   # Tạo biểu đồ
   plt.figure(figsize=(15, 5))  # Kích thước hợp lý hơn cho biểu đồ
   plt.plot(weeks, sales, marker='o', color='b')
-  plt.title('Biểu đồ thể hiện lượt bán hàng theo tuần')
+  plt.title('Biểu đồ thể hiện lượt bán hàng theo 2 tuần')
   plt.xlabel('Tuần')
   plt.ylabel('Lượt bán')
   plt.xticks(rotation=45, ha='right', fontsize=8)
@@ -108,7 +108,6 @@ def count_days_per_two_weeks(datetime_list):
 def sellProductByWeek(file):
   with open(file, 'r', encoding='utf-8') as f:
     data = json.load(f)
-  data = data[0:1]
   for item in data:
     if 'code' in item:
       time_list = [cmt['timestamp'] for cmt in item['ratings']]
